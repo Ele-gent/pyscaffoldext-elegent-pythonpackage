@@ -19,6 +19,8 @@ def test_add_custom_extension(tmpfolder):
     # --no-config: avoid extra config from dev's machine interference
     cli.main(args)
     assert Path("my_project/src/my_package/__init__.py").exists()
+    assert Path("my_project/README.md").exists()
+    assert Path("my_project/AUTHORS.md").exists()
 
 
 def test_add_custom_extension_and_pretend(tmpfolder):
@@ -26,6 +28,7 @@ def test_add_custom_extension_and_pretend(tmpfolder):
     # --no-config: avoid extra config from dev's machine interference
     cli.main(args)
 
+    assert not Path("my_project/README.md").exists()
     assert not Path("my_project").exists()
 
 
