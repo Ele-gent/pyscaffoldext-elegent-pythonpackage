@@ -72,6 +72,6 @@ def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
         "README.md": (template("readme"), NO_OVERWRITE),
         "CONTRIBUTING.md": (template("contributing"), NO_OVERWRITE),
         "LICENSE.txt": (template("license"), NO_OVERWRITE),
-        "tox.ini": (template("tox.ini"), NO_OVERWRITE),
+        "tox.ini": (template("tox_ini"), NO_OVERWRITE),
     }
     return merge(struct, files), opts
