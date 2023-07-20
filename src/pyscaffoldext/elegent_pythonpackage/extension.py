@@ -6,7 +6,7 @@ from pyscaffold.extensions import Extension, include
 from pyscaffold.extensions.pre_commit import PreCommit
 from pyscaffold.identification import get_id
 from pyscaffold.operations import no_overwrite
-from pyscaffold.structure import merge
+from pyscaffold.structure import merge, reject
 from pyscaffold.templates import get_template
 
 from pyscaffoldext.markdown.extension import Markdown, replace_files
@@ -59,6 +59,9 @@ class ElegentPythonpackage(Extension):
         actions = self.register(
             actions, replace_elegentfiles, after=get_id(replace_files)
         )
+        actions = self.register(
+            actions, remove_files, after=get_id(replace_elegentfiles)
+        )
         return actions
 
 
@@ -75,3 +78,8 @@ def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
         "tox.ini": (template("tox_ini"), NO_OVERWRITE),
     }
     return merge(struct, files), opts
+
+
+def remove_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
+    """Remove .tox.ini file to structure"""
+    return reject(struct, ".readthedocs.yml"), opts
