@@ -66,7 +66,7 @@ class ElegentPythonpackage(Extension):
 
 
 def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
-    """Replace the readme.md of the markdown extension by our own
+    """Replace the readme.md of the markdown extension by our own, and others
     See :obj:`pyscaffold.actions.Action`
     """
 
@@ -81,5 +81,7 @@ def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
 
 
 def remove_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
-    """Remove .tox.ini file to structure"""
-    return reject(struct, ".readthedocs.yml"), opts
+    """Remove files to structure"""
+    struct = reject(struct, ".readthedocs.yml")
+    struct = reject(struct, ".coveragerc")
+    return struct, opts
