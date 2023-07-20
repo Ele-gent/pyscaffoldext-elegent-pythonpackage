@@ -26,7 +26,7 @@ class ElegentPythonpackage(Extension):
     extension - https://pyscaffold.org/en/latest/extensions.html
     """
 
-    name = "elegent-pythonpackage"
+    _name = "elegent-pythonpackage"
 
     def augment_cli(self, parser):
         """Augments the command-line interface parser
@@ -70,5 +70,7 @@ def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     files: Structure = {
         "AUTHORS.md": (template("authors"), NO_OVERWRITE),
         "README.md": (template("readme"), NO_OVERWRITE),
+        "CONTRIBUTING.md": (template("contributing"), NO_OVERWRITE),
+        "LICENSE.txt": (template("license"), NO_OVERWRITE),
     }
     return merge(struct, files), opts
