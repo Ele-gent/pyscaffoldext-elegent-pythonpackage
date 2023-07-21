@@ -107,10 +107,11 @@ def add_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     files: Structure = {
         ".github": {
             "ISSUE_TEMPLATE": {
-                "feature_request.md": (template("feature_request"), no_overwrite()),
-                "bug_report.md": (template("bug_report"), no_overwrite()),
+                "feature_request.md": (template("feature_request"), NO_OVERWRITE),
+                "bug_report.md": (template("bug_report"), NO_OVERWRITE),
             }
         },
+        "create_venv.sh": (template("create_venv"), NO_OVERWRITE),
     }
 
     return merge(struct, files), opts
