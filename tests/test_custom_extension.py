@@ -32,6 +32,13 @@ EXPECTED_FILES = [
     # "notebooks/template.ipynb",
     # "scripts/train_model.py",
     "src/my_package/__init__.py",
+    "create_venv.sh",
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/ISSUE_TEMPLATE/feature_request.md",
+    "tox.ini",
+    "LICENSE.txt",
+    "CONTRIBUTING.md",
+    ".pre-commit-config.yaml",
 ]
 
 
