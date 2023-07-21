@@ -1,4 +1,3 @@
-from functools import partial
 from typing import List
 
 from pyscaffold.actions import Action, ActionParams, ScaffoldOpts, Structure
@@ -6,17 +5,13 @@ from pyscaffold.extensions import Extension, include
 from pyscaffold.extensions.pre_commit import PreCommit
 from pyscaffold.identification import get_id
 from pyscaffold.operations import no_overwrite
-from pyscaffold.structure import merge, reject
-from pyscaffold.templates import get_template
+from pyscaffold.structure import ensure, merge, reject
 
 from pyscaffoldext.markdown.extension import Markdown, replace_files
 
-from . import templates
+from .templates import readme_md, template
 
 NO_OVERWRITE = no_overwrite()
-
-
-template = partial(get_template, relative_to=templates)
 
 
 class ElegentPythonpackage(Extension):
@@ -60,8 +55,9 @@ class ElegentPythonpackage(Extension):
             actions, replace_elegentfiles, after=get_id(replace_files)
         )
         actions = self.register(
-            actions, remove_files, after=get_id(replace_elegentfiles)
+            actions, replace_readme, after=get_id(replace_elegentfiles)
         )
+        actions = self.register(actions, remove_files, after=get_id(replace_readme))
         return actions
 
 
@@ -72,7 +68,7 @@ def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
 
     files: Structure = {
         "AUTHORS.md": (template("authors"), NO_OVERWRITE),
-        "README.md": (template("readme"), NO_OVERWRITE),
+        # "README.md": (template("readme"), NO_OVERWRITE), # see separate function
         "CONTRIBUTING.md": (template("contributing"), NO_OVERWRITE),
         "LICENSE.txt": (template("license"), NO_OVERWRITE),
         "tox.ini": (template("tox_ini"), NO_OVERWRITE),
@@ -85,3 +81,10 @@ def remove_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     struct = reject(struct, ".readthedocs.yml")
     struct = reject(struct, ".coveragerc")
     return struct, opts
+
+
+def replace_readme(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
+    """Replace the readme.md of the markdown extension by our own
+    See :obj:`pyscaffold.actions.Action`
+    """
+    return ensure(struct, "README.md", readme_md, NO_OVERWRITE), opts

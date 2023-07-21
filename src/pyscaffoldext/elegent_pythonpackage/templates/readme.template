@@ -53,6 +53,7 @@ cd /project/folder/location
 
 ## Note
 
-This project has been set up using PyScaffold ${version} and the [Elegent python package extension] ${elegent_pythonpackage_version}.
+This project has been set up using [PyScaffold] ${version} and the [Elegent python package extension] ${elegent_pythonpackage_version}.
 
+[PyScaffold]: https://pyscaffold.org/
 [Elegent python package extension]: https://github.com/Ele-Gent/pyscaffoldext-elegent-pythonpackage
