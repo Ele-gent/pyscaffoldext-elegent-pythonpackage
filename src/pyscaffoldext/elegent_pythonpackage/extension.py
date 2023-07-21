@@ -72,6 +72,7 @@ def replace_elegentfiles(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
         "CONTRIBUTING.md": (template("contributing"), NO_OVERWRITE),
         "LICENSE.txt": (template("license"), NO_OVERWRITE),
         "tox.ini": (template("tox_ini"), NO_OVERWRITE),
+        ".pre-commit-config.yaml": (template("pre-commit-config"), NO_OVERWRITE),
     }
     return merge(struct, files), opts
 
