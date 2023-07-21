@@ -1,0 +1,59 @@
+[![Project generated with PyScaffold](https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold)](https://pyscaffold.org/)
+[![tests](https://github.com/Ele-gent/${name}/actions/workflows/ci.yml/badge.svg)](https://github.com/Ele-gent/${name}/actions/workflows/ci.yml)
+
+# ${name}
+
+> ${description}
+
+A longer description of your project goes here...
+
+## installation
+
+Installation
+------------
+First:
+```shell
+# generate your virtual environment  via venv
+python3.11 -m venv .venv --prompt ${name}
+# activate env (not needed if explictly using pip from the venv)
+source .venv/bin/activate
+# or via conda
+conda create -n ${name} python=3.11
+```
+After, two options:
+1. install via code on GitHub (basic usage) or
+2. clone the repo locally and install there (development or offline usage)
+
+For route number 1: you can specify which release you want by using the correct tag after `@`
+```shell
+# basic
+python3 -m pip install "git+https://github.com/Ele-gent/${name}.git"
+# install from a specific branch
+python3 -m pip install "git+https://github.com/Ele-gent/${name}.git@initialisation"
+# install a specific release, see release history above or the tags pane to check which ones are available
+python3 -m pip install "git+https://github.com/Ele-gent/${name}.git@v4.2.0"
+```
+
+for route number 2: download or clone the repo from [this location](https://github.com/Ele-gent/${name}.git) and install
+```shell
+# goto your desired location
+cd /target/for/gh/download
+# clone repo
+gh repo clone Ele-gent/${name}
+# goto your desired project folder
+cd /project/folder/location
+# install in the virtual environment
+# editable option is used so that any changes in the source code location can directly
+# be used in the scripts in the project folder.
+# Remove this option if this behaviour is not required.
+.venv/bin/python3 -m pip install --editable /target/for/gh/download/${name}[full]
+```
+
+<!-- pyscaffold-notes -->
+
+## Note
+
+This project has been set up using [PyScaffold] ${version} and the [Elegent python package extension] ${elegent_pythonpackage_version}.
+
+[PyScaffold]: https://pyscaffold.org/
+[Elegent python package extension]: https://github.com/Ele-Gent/pyscaffoldext-elegent-pythonpackage

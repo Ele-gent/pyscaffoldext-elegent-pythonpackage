@@ -29,7 +29,7 @@ repos:
 
 # If you want to automatically "modernize" your Python code:
 - repo: https://github.com/asottile/pyupgrade
-  rev: v3.9.0
+  rev: v3.7.0
   hooks:
   - id: pyupgrade
     args: ['--py38-plus']
@@ -46,12 +46,12 @@ repos:
 #     ]
 
 - repo: https://github.com/PyCQA/isort
-  rev: 5.12.0
+  rev: 5.11.5
   hooks:
   - id: isort
 
 - repo: https://github.com/psf/black
-  rev: 23.7.0
+  rev: stable
   hooks:
   - id: black
     language_version: python3
@@ -64,7 +64,7 @@ repos:
 #     additional_dependencies: [black]
 
 - repo: https://github.com/PyCQA/flake8
-  rev: 6.0.0
+  rev: 5.0.4
   hooks:
   - id: flake8
   ## You can add flake8 plugins via `additional_dependencies`:
