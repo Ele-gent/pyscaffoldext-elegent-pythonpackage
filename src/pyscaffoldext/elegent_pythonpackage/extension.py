@@ -46,6 +46,7 @@ class ElegentPythonpackage(Extension):
 
     def activate(self, actions: List[Action]) -> List[Action]:
         """Activate extension. See :obj:`pyscaffold.extension.Extension.activate`."""
+        actions = self.register(actions, add_files, after="define_structure")
         actions = Markdown().activate(actions)
         # ^  Wrapping the Markdown extension is more reliable than including it via CLI.
         #    This way we can trust the activation order for registering actions,
@@ -89,3 +90,27 @@ def replace_readme(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     See :obj:`pyscaffold.actions.Action`
     """
     return ensure(struct, "README.md", readme_md, NO_OVERWRITE), opts
+
+
+def add_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
+    """Add in the folder .github/ISSUE_TEMPLATE/ the files bug_report.md and
+    feature_request.md to the file structure
+
+    Args:
+        struct: project representation as (possibly) nested :obj:`dict`.
+        opts: given options, see :obj:`create_project` for an extensive list.
+
+    Returns:
+        struct, opts: updated project representation and options
+    """
+
+    files: Structure = {
+        ".github": {
+            "ISSUE_TEMPLATE": {
+                "feature_request.md": (template("feature_request"), no_overwrite()),
+                "bug_report.md": (template("bug_report"), no_overwrite()),
+            }
+        },
+    }
+
+    return merge(struct, files), opts
