@@ -81,3 +81,10 @@ repos:
   hooks:
     - id: nbstripout
       exclude: examples/example.ipynb
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.5.1
+  hooks:
+    - id: mypy
+      exclude: ^tests/
+      args: [--strict, --ignore-missing-imports]
