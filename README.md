@@ -56,7 +56,24 @@ Note that `putup -h` shows a new option `--elegent-pythonpackage`.
 putup TEST --elegent-pythonpackage
 ```
 
-*NOTE*: can be used in combination with other options!
+*NOTE*: can be used in combination with other options! Such as this more advanced usage:
+
+```shell
+putup \ # the command to call pyscaffold
+	TEST-dash-app \ # name of the folder you are creating
+	-p testdashapp \ # package name, i.e. what you will call in the import statement, this is the project_slug
+	--description="Test for a dash app" \ # a small description (can be altered later in the corresponding files)
+	-l="Proprietary" \ # type of license, if not open source, use proprietary
+	--url https://github.com/Ele-gent/TEST-dash-app \ # URL to link to our github, use the name (first entry)
+	--save-config ./TEST-dash-app/config_pyscaffold.cfg \ # save this configuration of options to a file
+	--elegent-github-actions \ # use the Elegent github actions for CI
+	--elegent-pythonpackage \ # this is a python package with the Elegent options
+	--venv \ # create a python virtual environment
+	--markdown \ # use markdown, not rst
+	-vv \ # be very verbose (will print a lot of stuff to the cli)
+```
+
+
 
 <!-- pyscaffold-notes -->
 
