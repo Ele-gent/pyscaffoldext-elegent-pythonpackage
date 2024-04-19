@@ -85,7 +85,7 @@ jobs:
         id: setup-python
         with:
           python-version: ${{ matrix.python }}
-      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      - uses: oleksiyrudenko/gha-git-credentials@v2.1.2
         with:
           global: true
           name: 'Derp McDerpface'
