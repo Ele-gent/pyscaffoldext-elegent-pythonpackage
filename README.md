@@ -75,7 +75,21 @@ putup \ # the command to call pyscaffold
 	-vv \ # be very verbose (will print a lot of stuff to the cli)
 ```
 
+If you want to either port an existing project to the Elegent templates or update an existing project to a newer version of the templates, you will need the options `--force --no-skeleton`.
 
+```bash
+# go to the parent directory of your project
+cd go/to/that/folder
+# activate your environment where pyscaffold and all the side packages are installed
+conda activate pyscaffold_stable
+# run putup
+putup TEST-dash-app --force --no-skeleton -p testdashapp --description="Test for a dash app" -l="Proprietary" --url https://github.com/Ele-gent/TEST-dash-app --save-config ./TEST-dash-app/config_pyscaffold.cfg --elegent-github-actions --elegent-pythonpackage --venv --markdown -vv
+```
+
+**IMPORTANT**
+always use the exact same options as when you generated the project, eg the license, otherwise pyscaffold will fall back to default options. When in doubt, see the `config_pyscaffold.cfg` file in the package, this should normally contain all the previous information.
+
+You can use the option `-config ./config_pyscaffold.cfg` to use the same extensions, but you will still need to add the description and url
 
 <!-- pyscaffold-notes -->
 
