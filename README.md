@@ -59,6 +59,8 @@ putup TEST --elegent-pythonpackage
 *NOTE*: can be used in combination with other options! Such as this more advanced usage:
 
 ```shell
+putup TEST-dash-app -p testdashapp --description="Test for a dash app" -l="Proprietary" --url https://github.com/Ele-gent/TEST-dash-app --save-config ./TEST-dash-app/config_pyscaffold.cfg --elegent-github-actions --elegent-pythonpackage --venv --markdown -vv
+# only added information that is not mentioned above
 putup \ # the command to call pyscaffold
 	TEST-dash-app \ # name of the folder you are creating
 	-p testdashapp \ # package name, i.e. what you will call in the import statement, this is the project_slug
