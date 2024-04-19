@@ -47,6 +47,8 @@ jobs:
         id: setup-python
         with: {python-version: "3.11"}
       - name: Run static analysis and format checkers
+        env:
+          SKIP: no-commit-to-branch
         run: pipx run pre-commit run --all-files --show-diff-on-failure
       - name: Build package distribution files
         run: >-
